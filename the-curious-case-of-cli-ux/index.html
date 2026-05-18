@@ -137,7 +137,7 @@
 <body>
 <div class="page">
   <div class="byline">
-    Shiva Chintaluru <span class="dot">·</span> Product Manager, Microsoft <span class="dot">·</span> 7 min read
+    Shiva Chintaluru <span class="dot">·</span> Product Manager, Microsoft <span class="dot">·</span> 5 min read
   </div>
 
   <h1>The curious case of CLI UX</h1>
@@ -225,65 +225,55 @@
   </figure>
 
   <article>
-    <p class="lede">The ugliest interface I&rsquo;ve used in years is the one I can&rsquo;t stop opening.</p>
+    <p class="lede">I learned to write on a slate.</p>
 
-    <p>No colours. No icons. No menus. No reassuring blue button telling me what to click next. Just a blinking cursor and a black box.</p>
+    <p>A small black tablet. A chalk pencil. A wet rag to wipe it clean. Telugu first, then English. The alphabet practised one letter at a time on a surface that erased every mistake by lunchtime. Millions of South Asian kids learn to read and write this way. I was one of them.</p>
 
-    <p>I&rsquo;ve been in Claude Code 6&ndash;7 days a week. Building automations. Building ideas. Mostly just learning. For the first time in my PM career, I&rsquo;m coding.</p>
+    <p>I spent the next fifteen years learning to ship the opposite of a slate.</p>
+
+    <p>Buttons. Dropdowns. Tooltips. Progress bars. The disabled state on the Save button. Every UX component I&rsquo;ve shipped exists to enforce a script: buttons tell the user what they&rsquo;re allowed to ask for, dropdowns tell them when. Modals interrupt. Tooltips explain. Sidebars file. Colour everywhere. Every component a tiny decision the user no longer has to make for themselves.</p>
+
+    <p>That was the contract. The interface negotiates with the user on behalf of the system. The job of UX is to reduce the moments where the user has to think.</p>
+
+    <hr class="section-break"/>
+
+    <p class="short-beat">Six days ago I opened Claude Code.</p>
+
+    <p>The ugliest interface I&rsquo;ve used in years is the one I can&rsquo;t stop opening. No colours. No icons. No menus. No reassuring blue button telling me what to click next. Just a blinking cursor and a black box.</p>
+
+    <p>I&rsquo;ve been in there 6&ndash;7 days a week since. Building automations. Building ideas. Mostly just learning. For the first time in my PM career, I&rsquo;m coding.</p>
 
     <p>Six days is too short to be sure of any of this. I&rsquo;m writing it down anyway because the shift has been violent enough that I don&rsquo;t want to forget what it felt like before.</p>
 
-    <p class="short-beat">Every UX heuristic I&rsquo;ve been taught says this shouldn&rsquo;t work. It does.</p>
+    <hr class="section-break"/>
+
+    <p class="short-beat">Chat had been training me to wait.</p>
+
+    <p>When I&rsquo;m in ChatGPT, the loop is: send a message, get an answer almost instantly, respond, repeat. Logan Kilpatrick made the point on Lenny&rsquo;s podcast that the chat interface trains the ask. If the box says &ldquo;type and wait,&rdquo; I only ever typed things short enough to wait for.</p>
+
+    <p>The CLI flips that. I write intent. I hit return. I walk away. Sometimes for two minutes, sometimes twenty. When I come back, there&rsquo;s a working thing.</p>
+
+    <p>The real variable isn&rsquo;t the terminal. It&rsquo;s run length. Once a model can work for twenty minutes on one instruction, the synchronous chat loop is the wrong shape for it, whether the wrapper is a terminal, a Slack bot, or a web app. The CLI just happened to be the first place I felt it, because it ships with no affordances pulling me back into the supervising habit.</p>
 
     <hr class="section-break"/>
 
-    <p>When I&rsquo;m in ChatGPT, the loop is: send a message, get an answer almost instantly, respond, repeat. Logan Kilpatrick made this point on Lenny&rsquo;s podcast. The synchronous loop is a fine fit for short questions, and a terrible fit for tasks that need real reasoning time. The interface trains the ask. If the box says &ldquo;type and wait,&rdquo; I only ever typed things short enough to wait for.</p>
-
-    <p>What flipped wasn&rsquo;t the black box itself. It was the run length. The moment a model can work for twenty minutes on one instruction, the synchronous chat loop becomes the wrong shape for it &mdash; terminal, Slack bot, or web app. The CLI just happened to be the first place I felt it, because it ships with no affordances pulling me back into the synchronous habit.</p>
-
-    <p>I write intent. I hit return. I walk away. Sometimes for two minutes, sometimes twenty. When I come back there&rsquo;s a working thing.</p>
-
-    <p class="short-beat">It stopped feeling like chat. It started feeling like handing work off.</p>
-
-    <p>That&rsquo;s the contract I have with a colleague: give me the task, tell me when you want it back, leave me alone in between. I didn&rsquo;t realise how much I wanted that from an AI tool until I had it. The chat box was the right shape for short questions. It was never the right shape for delegation.</p>
-
-    <hr class="section-break"/>
-
-    <p>Every UX component I&rsquo;ve shipped &mdash; buttons, dropdowns, progress bars, the disabled state on the Save button &mdash; exists to enforce a script. Buttons tell the user what they&rsquo;re allowed to ask for. Dropdowns tell them when.</p>
-
-    <p>Vibecoding doesn&rsquo;t need most of that script. I describe. It builds. I review. Two moves. Three if I reject and try again.</p>
-
-    <p>Once the model reads intent, most components become friction. The ones that survive (the approval prompt before a destructive command, the plan I can interrupt) earn it because they protect me from the agent, not from myself. That&rsquo;s a much smaller surface area than the click-era IDE was built for.</p>
-
-    <p class="short-beat">Claude Code doesn&rsquo;t ship with most of a script. That&rsquo;s what&rsquo;s strange about it.</p>
-
-    <hr class="section-break"/>
-
-    <p>ChatGPT&rsquo;s product team has said publicly that how a model feels, not how it benchmarks, drives a surprising share of retention. Nick Turley on Lenny&rsquo;s podcast treats it as a first-class product metric. I rolled my eyes the first time I read it.</p>
-
-    <p>I get it now. The vibe of Claude Code isn&rsquo;t the colour scheme. It&rsquo;s the loop. Type intent. Get a working thing I couldn&rsquo;t have shipped before. Type the next. Get another. By the third one in a session, my brain has wired the loop. By day 4, I was checking the terminal in airport queues.</p>
-
-    <p>That high doesn&rsquo;t come from a chat sidebar watching me type. It comes from walking away and coming back to something I couldn&rsquo;t have built. I&rsquo;m only saying this because I felt it in my own hands this week.</p>
-
-    <p>Dhanji Prasanna, CTO of Block, told a story on Lenny&rsquo;s podcast that sounded outlandish until I started living in Claude Code. One of his engineers runs Goose, Block&rsquo;s open-source agent, in always-on mode. The engineer mentions a feature in Slack. A few hours later there&rsquo;s a PR for it on GitHub. Prasanna&rsquo;s team has gone from 5-minute Goose sessions to hours of autonomous operation. I can&rsquo;t verify the hours-saved number his team reports, but the shape of the loop he describes is the one I&rsquo;m starting to feel.</p>
-
-    <hr class="section-break"/>
+    <p>Type intent. Get a working thing I couldn&rsquo;t have shipped before. Type the next. Get another. By the third one in a session, my brain has wired the loop. By day 4, I was checking the terminal in airport queues. That high doesn&rsquo;t come from a sidebar watching me type. It only comes from walking away and coming back to something I couldn&rsquo;t have built.</p>
 
     <p class="short-beat">The pent up energy that always stopped PMs wasn&rsquo;t fear. At least, mine wasn&rsquo;t. It was the interface.</p>
 
     <p>I&rsquo;ve opened VS Code, read three lines of someone else&rsquo;s code, felt the weight of &ldquo;I should know what these brackets mean by now,&rdquo; and closed the tab. More times than I want to say. Cursor helped. Replit helped. The chat sidebar helped. None of them removed the part where the IDE was still teaching me to write code in the margins, with autocomplete and red squigglies that all said the same thing: you&rsquo;re not really one of the people this interface is for.</p>
 
-    <p>Claude Code worked for me because all it asked me to do was describe what I wanted. That&rsquo;s the first time I&rsquo;ve been one of the people an interface like that is for.</p>
+    <p>Alexander Embiricos has said memorising syntax matters less now and saying what you want matters more. The CLI is the first surface that bets fully on that shift. It doesn&rsquo;t teach me syntax. It barely shows me any. I describe. It builds. I read. I keep or discard.</p>
 
-    <p>Alexander Embiricos has said memorising syntax matters less now, and being able to say what you want matters more. Code reading and debugging still do. I&rsquo;m still learning to read what Claude gives me back, and six days hasn&rsquo;t taught me that yet.</p>
+    <p>I described a Slack bot. It built it. I described an automation that scrapes a feed and posts to a channel. It built it. Neither is interesting. Both are things I would never have shipped on my own before this week.</p>
 
-    <p>I described a Slack bot. It built it. I described an automation that scrapes a feed and posts to a channel. It built it. Neither is interesting. Both are things I would never have shipped on my own before this week, because the IDE kept asking me to be someone I&rsquo;m not.</p>
+    <hr class="section-break"/>
+
+    <p>Every UX heuristic I was taught has a regime. They&rsquo;re not laws. They&rsquo;re rules for a contract: the contract where the interface has to negotiate on behalf of a system that can&rsquo;t read the user&rsquo;s intent. The CLI is a regime where that contract has shifted. The model reads intent. The negotiation isn&rsquo;t needed. And every component I was taught to add is now teaching me to add things I no longer need to add.</p>
 
     <p>Who knew colours and UX components are this much distracting.</p>
 
-    <p>The hard part isn&rsquo;t figuring out why this works. It&rsquo;s admitting how much of the old UI I never needed.</p>
-
-    <blockquote class="pullquote">The slate we all started to write from was there the whole time. Most of us got handed Figma instead.</blockquote>
+    <blockquote class="pullquote">I learned to write on a slate. I spent fifteen years learning to ship apps with colour and buttons. Six days in Claude Code and I&rsquo;m back on a slate. Different chalk.</blockquote>
 
     <div class="end-cta">
       <strong>PMs who&rsquo;ve shipped something with Claude Code or Cursor:</strong> what was the first thing that surprised you?<br/><br/>
@@ -297,7 +287,7 @@
       <span>#AIFirstPM</span>
       <span>#ClaudeCode</span>
     </div>
-    <div class="when">v1.0 · localhost preview</div>
+    <div class="when">v2.0 · slate spine</div>
   </div>
 </div>
 </body>
