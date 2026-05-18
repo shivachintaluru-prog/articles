@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The curious case of CLI UX — Shiva Chintaluru</title>
+<meta name="description" content="A PM's field report from six days inside Claude Code." />
+<style>
+  :root {
+    --bg: #fafaf9;
+    --ink: #1a1a1a;
+    --muted: #5a5a5a;
+    --rule: #e7e5e1;
+    --accent: #0a66c2;
+    --term-bg: #0d1117;
+    --term-green: #34d058;
+    --term-dim: #8b949e;
+    --term-white: #f0f6fc;
+    --serif: ui-serif, Georgia, "Iowan Old Style", "Apple Garamond", Cambria, "Times New Roman", Times, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14110f;
+      --ink: #f3eee5;
+      --muted: #a0978a;
+      --rule: #2a2622;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  .byline {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .byline .dot { margin: 0 6px; opacity: 0.5; }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin: 6px 0 28px;
+  }
+  .hero {
+    margin: 28px 0 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.08);
+    background: var(--term-bg);
+    aspect-ratio: 1200 / 630;
+  }
+  .hero svg { display: block; width: 100%; height: 100%; }
+  article p {
+    margin: 0 0 22px;
+  }
+  article p.lede {
+    font-size: 23px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  article p.short-beat {
+    font-size: 21px;
+    line-height: 1.4;
+    margin: 30px 0;
+    font-weight: 600;
+  }
+  hr.section-break {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 36px auto;
+    width: 56px;
+  }
+  blockquote.pullquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 22px;
+    margin: 36px 0;
+  }
+  .end-cta {
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    background: rgba(10,102,194,0.06);
+    border: 1px solid rgba(10,102,194,0.16);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-top: 40px;
+  }
+  .end-cta strong { font-weight: 600; }
+  .meta {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .meta .tags span {
+    display: inline-block;
+    margin-right: 8px;
+  }
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  .hero svg .cursor { animation: blink 1.05s steps(1, end) infinite; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="byline">
+    Shiva Chintaluru <span class="dot">·</span> Product Manager, Microsoft <span class="dot">·</span> 7 min read
+  </div>
+
+  <h1>The curious case of CLI UX</h1>
+
+  <figure class="hero" aria-label="Terminal scene with the article's opening line typed at a prompt">
+    <svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hero-title">
+      <title id="hero-title">A terminal with the article's opening line typed at a prompt</title>
+      <defs>
+        <linearGradient id="bgg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0d1117"/>
+          <stop offset="1" stop-color="#161b22"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="630" fill="url(#bgg)"/>
+
+      <rect x="40" y="40" width="1120" height="550" rx="14" fill="#0b0f15" stroke="#1f2630" stroke-width="1"/>
+      <rect x="40" y="40" width="1120" height="42" rx="14" fill="#161b22"/>
+      <circle cx="68" cy="61" r="7" fill="#ff5f56"/>
+      <circle cx="92" cy="61" r="7" fill="#ffbd2e"/>
+      <circle cx="116" cy="61" r="7" fill="#27c93f"/>
+      <text x="600" y="66" text-anchor="middle" font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="14" fill="#8b949e">~/projects/cli-ux</text>
+
+      <g font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="22" fill="#f0f6fc">
+        <text x="80" y="140"><tspan fill="#8b949e">shiva@vibecode</tspan> <tspan fill="#34d058">$</tspan> <tspan fill="#f0f6fc">claude</tspan></text>
+
+        <text x="80" y="200" fill="#8b949e">┌─ welcome to claude code ──────────────────────────────────┐</text>
+        <text x="80" y="232" fill="#8b949e">│  type intent. walk away. come back to a working thing.    │</text>
+        <text x="80" y="264" fill="#8b949e">└────────────────────────────────────────────────────────────┘</text>
+
+        <text x="80" y="328"><tspan fill="#34d058">&gt;</tspan> <tspan fill="#f0f6fc">the ugliest interface i&apos;ve used in years</tspan></text>
+        <text x="80" y="362" fill="#f0f6fc">  is the one i can&apos;t stop opening.</text>
+
+        <text x="80" y="436"><tspan fill="#34d058">&gt;</tspan> <tspan class="cursor" fill="#f0f6fc">▌</tspan></text>
+
+        <text x="80" y="540" font-size="14" fill="#586069">no colours · no icons · no menus · just intent</text>
+      </g>
+    </svg>
+  </figure>
+
+  <article>
+    <p class="lede">The ugliest interface I&rsquo;ve used in years is the one I can&rsquo;t stop opening.</p>
+
+    <p>No colours. No icons. No menus. No reassuring blue button telling me what to click next. Just a blinking cursor and a black box.</p>
+
+    <p>I&rsquo;ve been in Claude Code 6&ndash;7 days a week. Building automations. Building ideas. Mostly just learning. For the first time in my PM career, I&rsquo;m coding.</p>
+
+    <p>Six days is too short to be sure of any of this. I&rsquo;m writing it down anyway because the shift has been violent enough that I don&rsquo;t want to forget what it felt like before.</p>
+
+    <p class="short-beat">Every UX heuristic I&rsquo;ve been taught says this shouldn&rsquo;t work. It does.</p>
+
+    <hr class="section-break"/>
+
+    <p>The first thing I noticed is how much the chat box had been training me to wait.</p>
+
+    <p>When I&rsquo;m in ChatGPT, the loop is: send a message, get an answer almost instantly, respond, repeat. Logan Kilpatrick made this point on Lenny&rsquo;s podcast. The synchronous loop is a fine fit for short questions, and a terrible fit for tasks that need real reasoning time. The interface trains the ask. If the box says &ldquo;type and wait,&rdquo; I only ever typed things short enough to wait for.</p>
+
+    <p>What flipped wasn&rsquo;t the black box itself. It was the run length. The moment a model can work for twenty minutes on one instruction, the synchronous chat loop becomes the wrong shape for it &mdash; terminal, Slack bot, or web app. The CLI just happened to be the first place I felt it, because it ships with no affordances pulling me back into the synchronous habit.</p>
+
+    <p>I write intent. I hit return. I walk away. Sometimes for two minutes, sometimes twenty. When I come back there&rsquo;s a working thing.</p>
+
+    <p class="short-beat">It stopped feeling like chat. It started feeling like handing work off.</p>
+
+    <p>That&rsquo;s the contract I have with a colleague: give me the task, tell me when you want it back, leave me alone in between. I didn&rsquo;t realise how much I wanted that from an AI tool until I had it. The chat box was the right shape for short questions. It was never the right shape for delegation.</p>
+
+    <hr class="section-break"/>
+
+    <p>The second thing I noticed is what the colours were doing in the first place.</p>
+
+    <p>Every UX component I&rsquo;ve shipped &mdash; buttons, dropdowns, progress bars, the disabled state on the Save button &mdash; exists to enforce a script. Buttons tell the user what they&rsquo;re allowed to ask for. Dropdowns tell them when.</p>
+
+    <p>Vibecoding doesn&rsquo;t need most of that script. I describe. It builds. I review. Two moves. Three if I reject and try again.</p>
+
+    <p>Once the model reads intent, most components become friction. The ones that survive (the approval prompt before a destructive command, the plan I can interrupt) earn it because they protect me from the agent, not from myself. That&rsquo;s a much smaller surface area than the click-era IDE was built for.</p>
+
+    <p class="short-beat">Claude Code doesn&rsquo;t ship with most of a script. That&rsquo;s what&rsquo;s strange about it.</p>
+
+    <hr class="section-break"/>
+
+    <p>The third thing I noticed is the dopamine.</p>
+
+    <p>ChatGPT&rsquo;s product team has said publicly that how a model feels, not how it benchmarks, drives a surprising share of retention. Nick Turley on Lenny&rsquo;s podcast treats it as a first-class product metric. I rolled my eyes the first time I read it.</p>
+
+    <p>I get it now. The vibe of Claude Code isn&rsquo;t the colour scheme. It&rsquo;s the loop. Type intent. Get a working thing I couldn&rsquo;t have shipped before. Type the next. Get another. By the third one in a session, my brain has wired the loop. By day 4, I was checking the terminal in airport queues.</p>
+
+    <p>That high doesn&rsquo;t come from a chat sidebar watching me type. It comes from walking away and coming back to something I couldn&rsquo;t have built. I&rsquo;m only saying this because I felt it in my own hands this week.</p>
+
+    <p>Dhanji Prasanna, CTO of Block, told a story on Lenny&rsquo;s podcast that sounded outlandish until I started living in Claude Code. One of his engineers runs Goose, Block&rsquo;s open-source agent, in always-on mode. The engineer mentions a feature in Slack. A few hours later there&rsquo;s a PR for it on GitHub. Prasanna&rsquo;s team has gone from 5-minute Goose sessions to hours of autonomous operation. I can&rsquo;t verify the hours-saved number his team reports, but the shape of the loop he describes is the one I&rsquo;m starting to feel.</p>
+
+    <hr class="section-break"/>
+
+    <p>The fourth thing is what Claude Code did to a feeling I&rsquo;ve carried for a decade.</p>
+
+    <p class="short-beat">The pent up energy that always stopped PMs wasn&rsquo;t fear. At least, mine wasn&rsquo;t. It was the interface.</p>
+
+    <p>I&rsquo;ve opened VS Code, read three lines of someone else&rsquo;s code, felt the weight of &ldquo;I should know what these brackets mean by now,&rdquo; and closed the tab. More times than I want to say. Cursor helped. Replit helped. The chat sidebar helped. None of them removed the part where the IDE was still teaching me to write code in the margins, with autocomplete and red squigglies that all said the same thing: you&rsquo;re not really one of the people this interface is for.</p>
+
+    <p>Claude Code worked for me because all it asked me to do was describe what I wanted. That&rsquo;s the first time I&rsquo;ve been one of the people an interface like that is for.</p>
+
+    <p>Alexander Embiricos has said memorising syntax matters less now, and being able to say what you want matters more. Code reading and debugging still do. I&rsquo;m still learning to read what Claude gives me back, and six days hasn&rsquo;t taught me that yet.</p>
+
+    <p>I described a Slack bot. It built it. I described an automation that scrapes a feed and posts to a channel. It built it. Neither is interesting. Both are things I would never have shipped on my own before this week, because the IDE kept asking me to be someone I&rsquo;m not.</p>
+
+    <p>Who knew colours and UX components are this much distracting.</p>
+
+    <p>The hard part isn&rsquo;t figuring out why this works. It&rsquo;s admitting how much of the old UI I never needed.</p>
+
+    <blockquote class="pullquote">The slate we all started to write from was there the whole time. Most of us got handed Figma instead.</blockquote>
+
+    <div class="end-cta">
+      <strong>PMs who&rsquo;ve shipped something with Claude Code or Cursor:</strong> what was the first thing that surprised you?<br/><br/>
+      <strong>PMs who haven&rsquo;t:</strong> what&rsquo;s stopping you from opening the terminal this week?
+    </div>
+  </article>
+
+  <div class="meta">
+    <div class="tags">
+      <span>#VibeCoding</span>
+      <span>#AIFirstPM</span>
+      <span>#ClaudeCode</span>
+    </div>
+    <div class="when">v1.0 · localhost preview</div>
+  </div>
+</div>
+</body>
+</html>

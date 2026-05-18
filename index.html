@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Articles — Shiva Chintaluru</title>
+<meta name="description" content="Drafts and field notes from an AI-first PM. Feedback welcome." />
+<style>
+  :root {
+    --bg: #fafaf9;
+    --ink: #1a1a1a;
+    --muted: #5a5a5a;
+    --rule: #e7e5e1;
+    --accent: #0a66c2;
+    --serif: ui-serif, Georgia, "Iowan Old Style", Cambria, "Times New Roman", Times, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14110f; --ink: #f3eee5; --muted: #a0978a; --rule: #2a2622; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: var(--serif); font-size: 18px; line-height: 1.6; }
+  .page { max-width: 680px; margin: 0 auto; padding: 64px 24px 96px; }
+  header h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin: 0 0 10px;
+  }
+  header p.lede {
+    font-family: var(--sans);
+    color: var(--muted);
+    font-size: 17px;
+    margin: 0 0 56px;
+  }
+  ul.posts { list-style: none; padding: 0; margin: 0; }
+  ul.posts li {
+    padding: 28px 0;
+    border-top: 1px solid var(--rule);
+  }
+  ul.posts li:last-child { border-bottom: 1px solid var(--rule); }
+  ul.posts .date {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  ul.posts a.title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.25;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-block;
+  }
+  ul.posts a.title:hover { color: var(--accent); }
+  ul.posts .dek {
+    font-family: var(--sans);
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 8px;
+  }
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Drafts &amp; field notes.</h1>
+    <p class="lede">Things I&rsquo;m writing as an AI-first PM. Most of what&rsquo;s here is in progress &mdash; tell me what&rsquo;s wrong.</p>
+  </header>
+
+  <ul class="posts">
+    <li>
+      <div class="date">May 2026 &middot; Draft</div>
+      <a class="title" href="./the-curious-case-of-cli-ux/">The curious case of CLI UX</a>
+      <div class="dek">Six days inside Claude Code. A field report on why the ugliest interface I&rsquo;ve used in years is the one I can&rsquo;t stop opening.</div>
+    </li>
+  </ul>
+
+  <footer>
+    Feedback: open an issue on <a href="https://github.com/shivachintaluru-prog/articles/issues">GitHub</a>, or DM me on LinkedIn.
+  </footer>
+</div>
+</body>
+</html>
