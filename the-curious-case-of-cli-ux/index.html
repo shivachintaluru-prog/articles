@@ -142,9 +142,9 @@
 
   <h1>The curious case of CLI UX</h1>
 
-  <figure class="hero" aria-label="Terminal scene with the article's opening line typed at a prompt">
+  <figure class="hero" aria-label="Side-by-side: every UX component I was taught to ship, versus one prompt in Claude Code.">
     <svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hero-title">
-      <title id="hero-title">A terminal with the article's opening line typed at a prompt</title>
+      <title id="hero-title">Every UX component I was taught to ship, versus one prompt in Claude Code.</title>
       <defs>
         <linearGradient id="bgg" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#0d1117"/>
@@ -153,27 +153,74 @@
       </defs>
       <rect width="1200" height="630" fill="url(#bgg)"/>
 
-      <rect x="40" y="40" width="1120" height="550" rx="14" fill="#0b0f15" stroke="#1f2630" stroke-width="1"/>
-      <rect x="40" y="40" width="1120" height="42" rx="14" fill="#161b22"/>
-      <circle cx="68" cy="61" r="7" fill="#ff5f56"/>
-      <circle cx="92" cy="61" r="7" fill="#ffbd2e"/>
-      <circle cx="116" cy="61" r="7" fill="#27c93f"/>
-      <text x="600" y="66" text-anchor="middle" font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="14" fill="#8b949e">~/projects/cli-ux</text>
+      <!-- Vertical divider -->
+      <line x1="600" y1="90" x2="600" y2="540" stroke="#2a3138" stroke-width="1"/>
 
-      <g font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="22" fill="#f0f6fc">
-        <text x="80" y="140"><tspan fill="#8b949e">shiva@vibecode</tspan> <tspan fill="#34d058">$</tspan> <tspan fill="#f0f6fc">claude</tspan></text>
+      <!-- LEFT HEADER -->
+      <text x="80" y="70" font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="12" fill="#586069" letter-spacing="2.5">EVERY INTERFACE I WAS TAUGHT TO SHIP</text>
 
-        <text x="80" y="200" fill="#8b949e">┌─ welcome to claude code ──────────────────────────────────┐</text>
-        <text x="80" y="232" fill="#8b949e">│  type intent. walk away. come back to a working thing.    │</text>
-        <text x="80" y="264" fill="#8b949e">└────────────────────────────────────────────────────────────┘</text>
+      <!-- LEFT: 14 component pills in 2x7 grid -->
+      <g font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="14" fill="#8b949e">
+        <!-- Row 1 -->
+        <rect x="80" y="110" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="92" y="131">Button</text>
+        <rect x="300" y="110" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="312" y="131">Tab bar</text>
 
-        <text x="80" y="328"><tspan fill="#34d058">&gt;</tspan> <tspan fill="#f0f6fc">the ugliest interface i&apos;ve used in years</tspan></text>
-        <text x="80" y="362" fill="#f0f6fc">  is the one i can&apos;t stop opening.</text>
+        <!-- Row 2 -->
+        <rect x="80" y="155" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="92" y="176">Dropdown</text>
+        <rect x="300" y="155" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="312" y="176">Snackbar</text>
 
-        <text x="80" y="436"><tspan fill="#34d058">&gt;</tspan> <tspan class="cursor" fill="#f0f6fc">▌</tspan></text>
+        <!-- Row 3 -->
+        <rect x="80" y="200" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="92" y="221">Tooltip</text>
+        <rect x="300" y="200" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="312" y="221">Slider</text>
 
-        <text x="80" y="540" font-size="14" fill="#586069">no colours · no icons · no menus · just intent</text>
+        <!-- Row 4 -->
+        <rect x="80" y="245" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="92" y="266">Progress bar</text>
+        <rect x="300" y="245" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="312" y="266">Date picker</text>
+
+        <!-- Row 5 -->
+        <rect x="80" y="290" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="92" y="311">Modal</text>
+        <rect x="300" y="290" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="312" y="311">Color picker</text>
+
+        <!-- Row 6 -->
+        <rect x="80" y="335" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="92" y="356">Toolbar</text>
+        <rect x="300" y="335" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="312" y="356">Confirm dialog</text>
+
+        <!-- Row 7 -->
+        <rect x="80" y="380" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="92" y="401">Sidebar</text>
+        <rect x="300" y="380" width="200" height="32" rx="4" fill="#161b22" stroke="#2a3138"/>
+        <text x="312" y="401">Onboarding tour</text>
       </g>
+
+      <!-- Ellipsis showing "and more" -->
+      <text x="290" y="445" text-anchor="middle" font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="22" fill="#586069">…</text>
+
+      <!-- RIGHT HEADER -->
+      <text x="640" y="70" font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="12" fill="#586069" letter-spacing="2.5">WHAT CLAUDE CODE SHIPS</text>
+
+      <!-- RIGHT: one prompt, centered vertically -->
+      <g font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="24" fill="#f0f6fc">
+        <text x="660" y="305">
+          <tspan fill="#34d058">&gt;</tspan>
+          <tspan fill="#f0f6fc"> describe what you want </tspan>
+          <tspan class="cursor" fill="#f0f6fc">▌</tspan>
+        </text>
+      </g>
+
+      <!-- Bottom caption -->
+      <text x="600" y="585" text-anchor="middle" font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="13" fill="#586069" letter-spacing="1">the curious case of CLI UX  ·  once the model reads intent, the script is gone</text>
     </svg>
   </figure>
 
@@ -190,8 +237,6 @@
 
     <hr class="section-break"/>
 
-    <p>The first thing I noticed is how much the chat box had been training me to wait.</p>
-
     <p>When I&rsquo;m in ChatGPT, the loop is: send a message, get an answer almost instantly, respond, repeat. Logan Kilpatrick made this point on Lenny&rsquo;s podcast. The synchronous loop is a fine fit for short questions, and a terrible fit for tasks that need real reasoning time. The interface trains the ask. If the box says &ldquo;type and wait,&rdquo; I only ever typed things short enough to wait for.</p>
 
     <p>What flipped wasn&rsquo;t the black box itself. It was the run length. The moment a model can work for twenty minutes on one instruction, the synchronous chat loop becomes the wrong shape for it &mdash; terminal, Slack bot, or web app. The CLI just happened to be the first place I felt it, because it ships with no affordances pulling me back into the synchronous habit.</p>
@@ -204,8 +249,6 @@
 
     <hr class="section-break"/>
 
-    <p>The second thing I noticed is what the colours were doing in the first place.</p>
-
     <p>Every UX component I&rsquo;ve shipped &mdash; buttons, dropdowns, progress bars, the disabled state on the Save button &mdash; exists to enforce a script. Buttons tell the user what they&rsquo;re allowed to ask for. Dropdowns tell them when.</p>
 
     <p>Vibecoding doesn&rsquo;t need most of that script. I describe. It builds. I review. Two moves. Three if I reject and try again.</p>
@@ -216,8 +259,6 @@
 
     <hr class="section-break"/>
 
-    <p>The third thing I noticed is the dopamine.</p>
-
     <p>ChatGPT&rsquo;s product team has said publicly that how a model feels, not how it benchmarks, drives a surprising share of retention. Nick Turley on Lenny&rsquo;s podcast treats it as a first-class product metric. I rolled my eyes the first time I read it.</p>
 
     <p>I get it now. The vibe of Claude Code isn&rsquo;t the colour scheme. It&rsquo;s the loop. Type intent. Get a working thing I couldn&rsquo;t have shipped before. Type the next. Get another. By the third one in a session, my brain has wired the loop. By day 4, I was checking the terminal in airport queues.</p>
@@ -227,8 +268,6 @@
     <p>Dhanji Prasanna, CTO of Block, told a story on Lenny&rsquo;s podcast that sounded outlandish until I started living in Claude Code. One of his engineers runs Goose, Block&rsquo;s open-source agent, in always-on mode. The engineer mentions a feature in Slack. A few hours later there&rsquo;s a PR for it on GitHub. Prasanna&rsquo;s team has gone from 5-minute Goose sessions to hours of autonomous operation. I can&rsquo;t verify the hours-saved number his team reports, but the shape of the loop he describes is the one I&rsquo;m starting to feel.</p>
 
     <hr class="section-break"/>
-
-    <p>The fourth thing is what Claude Code did to a feeling I&rsquo;ve carried for a decade.</p>
 
     <p class="short-beat">The pent up energy that always stopped PMs wasn&rsquo;t fear. At least, mine wasn&rsquo;t. It was the interface.</p>
 
